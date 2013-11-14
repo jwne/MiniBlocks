@@ -10,7 +10,6 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class SkullBlocks extends JavaPlugin
 {
-
 	@Override
 	public void onEnable()
 	{
