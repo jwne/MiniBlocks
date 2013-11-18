@@ -9,4 +9,5 @@ public class SkullBlockPermissions
 {
 	public static final String skullBlockCycle = "skullblocks.cycle";
 	public static final String skullWandCommand = "skullblocks.wand";
+	public static final String skullBlocksCommand = "skullblocks.generate";
 }

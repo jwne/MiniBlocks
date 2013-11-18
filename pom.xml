@@ -54,6 +54,14 @@
             <groupId>org.bukkit</groupId>
             <artifactId>craftbukkit</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.caved_in</groupId>
+            <artifactId>commons</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>me.xhawk87</groupId>
+            <artifactId>PopupMenuAPI</artifactId>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -61,6 +69,16 @@
                 <groupId>org.bukkit</groupId>
                 <artifactId>craftbukkit</artifactId>
                 <version>LATEST</version>
+            </dependency>
+            <dependency>
+                <groupId>com.caved_in</groupId>
+                <artifactId>commons</artifactId>
+                <version>1.0-TEST</version>
+            </dependency>
+            <dependency>
+                <groupId>me.xhawk87</groupId>
+                <artifactId>PopupMenuAPI</artifactId>
+                <version>0.2.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

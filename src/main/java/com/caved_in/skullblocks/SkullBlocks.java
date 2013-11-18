@@ -1,5 +1,8 @@
 package com.caved_in.skullblocks;
 
+import com.caved_in.skullblocks.commands.CommandController;
+import com.caved_in.skullblocks.commands.SkullBlockCommands;
+import com.caved_in.skullblocks.listeners.EventListeners;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,7 +16,8 @@ public class SkullBlocks extends JavaPlugin
 	@Override
 	public void onEnable()
 	{
-
+		CommandController.registerCommands(this, new SkullBlockCommands());
+		new EventListeners(this);
 	}
 
 

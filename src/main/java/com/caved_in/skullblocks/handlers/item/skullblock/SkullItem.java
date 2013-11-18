@@ -1,6 +1,7 @@
 package com.caved_in.skullblocks.handlers.item.skullblock;
 
 import org.bukkit.Material;
+import org.bukkit.material.MaterialData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,9 @@ public class SkullItem
 
 	private int itemIndex = -1;
 
-	private List<Material> skullMaterials = new ArrayList<>();
+	private MaterialData skullMaterial;
+
+	private String skullDescription;
 
 	public SkullItem(String skullOwner, int itemIndex)
 	{
@@ -24,11 +27,19 @@ public class SkullItem
 		this.itemIndex = itemIndex;
 	}
 
-	public SkullItem(String skullOwner, int itemIndex, List<Material> relativeMaterials)
+	public SkullItem(String skullOwner, int itemIndex, String skullDescription)
 	{
 		this.skullOwner = skullOwner;
 		this.itemIndex = itemIndex;
-		this.skullMaterials = relativeMaterials;
+		this.skullDescription = skullDescription;
+	}
+
+	public SkullItem(String skullOwner, int itemIndex, MaterialData relativeMaterial, String skullDescription)
+	{
+		this.skullOwner = skullOwner;
+		this.itemIndex = itemIndex;
+		this.skullMaterial = relativeMaterial;
+		this.skullDescription = skullDescription;
 	}
 
 	public String getSkullOwner()
@@ -41,13 +52,13 @@ public class SkullItem
 		return itemIndex;
 	}
 
-	public List<Material> getSkullMaterials()
+	public MaterialData getSkullMaterial()
 	{
-		return skullMaterials;
+		return skullMaterial;
 	}
 
-	public boolean hasMaterial(Material material)
+	public String getSkullDescription()
 	{
-		return this.skullMaterials.contains(material);
+		return skullDescription;
 	}
 }

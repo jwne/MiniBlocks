@@ -15,6 +15,7 @@ public class SkullWrapper
 	private String skullOwnerName;
 	private boolean hasMultipleMaterials = false;
 	private List<Material> relativeMaterials = new ArrayList<>();
+	private String skullDescription;
 
 	public SkullWrapper(String skullOwnerName, Material relativeMaterial)
 	{
@@ -22,7 +23,13 @@ public class SkullWrapper
 		this.relativeMaterials.add(relativeMaterial);
 	}
 
-	public SkullWrapper(String skullOwnerName, Material... relativeMaterials)
+	public SkullWrapper(String skullOwnerName, Material relativeMaterial, String skullDescription)
+	{
+		this(skullOwnerName,relativeMaterial);
+		this.skullDescription = skullDescription;
+	}
+
+	public SkullWrapper(String skullOwnerName, Material[] relativeMaterials, String skullDescription)
 	{
 		this.skullOwnerName = skullOwnerName;
 		for(Material material : relativeMaterials)
@@ -30,6 +37,7 @@ public class SkullWrapper
 			this.relativeMaterials.add(material);
 		}
 		this.hasMultipleMaterials = true;
+		this.skullDescription = skullDescription;
 	}
 
 
@@ -46,5 +54,10 @@ public class SkullWrapper
 	public boolean isHasMultipleMaterials()
 	{
 		return hasMultipleMaterials;
+	}
+
+	public String getSkullDescription()
+	{
+		return skullDescription;
 	}
 }

@@ -1,6 +1,7 @@
 package com.caved_in.skullblocks.handlers.item.skullblock;
 
 import org.bukkit.Material;
+import org.bukkit.material.MaterialData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,16 +13,22 @@ import java.util.List;
  */
 public class SkullMaterialWrapper
 {
-	private Material skullMaterial;
+	private MaterialData skullMaterial;
 	private List<SkullItem> skullItems = new ArrayList<>();
 
 	public SkullMaterialWrapper(Material skullMaterial, SkullItem skullItem)
+	{
+		this.skullMaterial = new MaterialData(skullMaterial);
+		this.skullItems.add(skullItem);
+	}
+
+	public SkullMaterialWrapper(MaterialData skullMaterial, SkullItem skullItem)
 	{
 		this.skullMaterial = skullMaterial;
 		this.skullItems.add(skullItem);
 	}
 
-	public Material getSkullMaterial()
+	public MaterialData getSkullMaterial()
 	{
 		return skullMaterial;
 	}

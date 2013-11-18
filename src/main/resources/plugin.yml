@@ -1,0 +1,15 @@
+name: SkullBlocks
+main: com.caved_in.skullblocks.SkullBlocks
+version: 1.0
+description: Blocks made with the skulls of players, muahahahahahaha!
+author: Brandon
+depend: [Tunnels-Common, PopupMenuAPI]
+commands:
+   skullwand:
+      usage: /<command>
+      description: Used to get the skull-wand
+      aliases: [sw, skw, sklwnd]
+   skullblocks:
+      usage: /<command> [SubCommand]
+      description: Used to generate skull-blocks
+      aliases: [skb, sklblk, sbl]
