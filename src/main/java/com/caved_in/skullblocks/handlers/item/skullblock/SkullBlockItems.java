@@ -20,8 +20,8 @@ public class SkullBlockItems
 {
 	private static Map<Integer, SkullItem> skullItems = new HashMap<>();
 	private static Map<Material, SkullMaterialWrapper> skullMaterialWrapper = new HashMap<>();
-	private static List<List<SkullItem>> skullItemPages;
 	private static int itemPages = 0;
+	private static List<List<SkullItem>> skullItemPages;
 
 	private static SkullWrapper[] skullNames = new SkullWrapper[] {
 			new SkullWrapper("Koebasti", Material.PUMPKIN, "Pumpkin with face"), //Pumpkin with face
@@ -70,9 +70,6 @@ public class SkullBlockItems
 			new SkullWrapper("AlexDr0ps",Material.REDSTONE_BLOCK,"Redstone Block"), //Redstone Block
 			new SkullWrapper("MHF_OakLog",Material.LOG, "Oak Log"), //Oak Log
 			new SkullWrapper("MechaUnit",Material.CACTUS, "Cactus Top"), //Cactus Top
-			//==============//
-			//   Mob Heads  //
-			//==============//
 			new SkullWrapper("Troax",Material.ENDER_PEARL,"Enderman face"), //Enderman
 			new SkullWrapper("GLaDOS",Material.SNOW_BALL,"Snowman face"), //Snowman
 			new SkullWrapper("Zisteau",Material.ROTTEN_FLESH, "Zombie pigman no skin"), //Pigman No Skin
@@ -93,21 +90,15 @@ public class SkullBlockItems
 			new SkullWrapper("Famastic",Material.RAW_FISH,"Clown Fish"), //Clown Fish
 			new SkullWrapper("MHF_MushroomCow",Material.RED_MUSHROOM,"Mushroom Cow"), //Mushroom Cow
 			new SkullWrapper("MHF_PigZombie",Material.ROTTEN_FLESH,"Zombie Pigman"), //Pig Zombie
-			new SkullWrapper("theangryman",varargs(Material.SKULL_ITEM), "Bloody Skull"), //Bloody Skull
+			new SkullWrapper("theangryman",Material.SKULL_ITEM, "Bloody Skull"), //Bloody Skull
 			new SkullWrapper("MHF_Chicken",Material.FEATHER, "Chicken"), //Chicken
 			new SkullWrapper("MHF_Herobrine",Material.SKULL_ITEM,"Herobrine"), //Herobrine
 			new SkullWrapper("Herobrine",Material.SKULL_ITEM,"Another Herobrine"), //Another Herobrine
-			//=============//
-			//    Food     //
-			//=============//
 			new SkullWrapper("ZachWarnerHD",Material.PUMPKIN_SEEDS, "Popcorn"), //Popcorn
 			new SkullWrapper("ChoclateMuffin",Material.COOKIE,"Cupcake"), //Cupcake
 			new SkullWrapper("food",Material.BREAD,"Hamburger"), //Hamburger
 			new SkullWrapper("MHF_Cake",Material.CAKE,"Cake!"), //Cake
 			new SkullWrapper("QuadratCookie",Material.COOKIE,"Cookie"), //Cookie
-			//=============//
-			//    Other    //
-			//=============//
 			new SkullWrapper("Endercreeper7253",Material.PAPER,"Globe"), //Globe
 			new SkullWrapper("Numba_one_Stunna",Material.NETHERRACK,"Netherrach"), //Netherrack
 			new SkullWrapper("CoderPuppy",Material.REDSTONE,"Computer"), //Computer
@@ -136,6 +127,12 @@ public class SkullBlockItems
 			new SkullWrapper("gumbo632",Material.REDSTONE_BLOCK, "Red 6-Sided Die"),
 			new SkullWrapper("jmars213", Material.QUARTZ_BLOCK, "White 6-Sided Die"),
 			new SkullWrapper("b1418", Material.REDSTONE, "Speaker"),
+			new SkullWrapper("ddrl46",Material.REDSTONE,"Missing Block"),
+			new SkullWrapper("PARTY_P01S0N", Material.SPIDER_EYE, "Green Eyeball"),
+			new SkullWrapper("Metroidling", Material.REDSTONE, "TV (Off)"),
+			new SkullWrapper("Cheapshot", Material.REDSTONE, "TV (Transmit Error)"),
+			new SkullWrapper("Ethegj", Material.PAPER, "Ass Wipe"),
+			new SkullWrapper("poisonedsoul", ItemHandler.getMaterialDataFromString("" + Material.SKULL_ITEM.getId() + ":1"), "Wither (Red Eyes)")
 
 	};
 
@@ -144,27 +141,27 @@ public class SkullBlockItems
 		for (int I = 0; I < skullNames.length; I++)
 		{
 			SkullWrapper skullWrapper = skullNames[I];
-			List<Material> materialList = skullWrapper.getRelativeMaterials();
-			SkullItem skullItem = new SkullItem(skullWrapper.getSkullOwnerName(),I,new MaterialData(materialList.get(0)),skullWrapper.getSkullDescription());
-			for(Material material : materialList)
+			MaterialData skullMaterialData = skullWrapper.getRelativeMaterial();
+			Material skullMaterial = skullMaterialData.getItemType();
+			SkullItem skullItem = new SkullItem(skullWrapper.getSkullOwnerName(),I,skullMaterialData,skullWrapper.getSkullDescription());
+			if (!skullMaterialWrapper.containsKey(skullMaterial))
 			{
-				if (!skullMaterialWrapper.containsKey(material))
-				{
-					skullMaterialWrapper.put(material,new SkullMaterialWrapper(material,skullItem));
-				}
-				else
-				{
-					skullMaterialWrapper.get(material).addSkullItem(skullItem);
-				}
+				skullMaterialWrapper.put(skullMaterial,new SkullMaterialWrapper(skullMaterial,skullItem));
+			}
+			else
+			{
+				skullMaterialWrapper.get(skullMaterial).addSkullItem(skullItem);
 			}
 		}
 
+		int pI = 0;
 		for(SkullMaterialWrapper materialWrapper : skullMaterialWrapper.values())
 		{
 			List<SkullItem> wrapperSkullItems = materialWrapper.getSkullItems();
 			for(int I = 0; I < wrapperSkullItems.size(); I++)
 			{
-				skullItems.put(I, wrapperSkullItems.get(I));
+				skullItems.put(pI, wrapperSkullItems.get(I));
+				pI += 1;
 			}
 		}
 

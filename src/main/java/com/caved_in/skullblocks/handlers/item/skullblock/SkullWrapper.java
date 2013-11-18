@@ -1,6 +1,7 @@
 package com.caved_in.skullblocks.handlers.item.skullblock;
 
 import org.bukkit.Material;
+import org.bukkit.material.MaterialData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +15,19 @@ public class SkullWrapper
 {
 	private String skullOwnerName;
 	private boolean hasMultipleMaterials = false;
-	private List<Material> relativeMaterials = new ArrayList<>();
+	private MaterialData relativeMaterial;
 	private String skullDescription;
+
+	public SkullWrapper(String skullOwnerName, MaterialData relativeMaterial)
+	{
+		this.skullOwnerName = skullOwnerName;
+		this.relativeMaterial = relativeMaterial;
+	}
 
 	public SkullWrapper(String skullOwnerName, Material relativeMaterial)
 	{
 		this.skullOwnerName = skullOwnerName;
-		this.relativeMaterials.add(relativeMaterial);
+		this.relativeMaterial = new MaterialData(relativeMaterial);
 	}
 
 	public SkullWrapper(String skullOwnerName, Material relativeMaterial, String skullDescription)
@@ -29,31 +36,21 @@ public class SkullWrapper
 		this.skullDescription = skullDescription;
 	}
 
-	public SkullWrapper(String skullOwnerName, Material[] relativeMaterials, String skullDescription)
+	public SkullWrapper(String skullOwnerName, MaterialData relativeMaterial, String skullDescription)
 	{
-		this.skullOwnerName = skullOwnerName;
-		for(Material material : relativeMaterials)
-		{
-			this.relativeMaterials.add(material);
-		}
-		this.hasMultipleMaterials = true;
+		this(skullOwnerName,relativeMaterial);
 		this.skullDescription = skullDescription;
 	}
 
 
-	public List<Material> getRelativeMaterials()
+	public MaterialData getRelativeMaterial()
 	{
-		return relativeMaterials;
+		return relativeMaterial;
 	}
 
 	public String getSkullOwnerName()
 	{
 		return skullOwnerName;
-	}
-
-	public boolean isHasMultipleMaterials()
-	{
-		return hasMultipleMaterials;
 	}
 
 	public String getSkullDescription()
