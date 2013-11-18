@@ -114,7 +114,15 @@ public class SkullBlockItems
 			new SkullWrapper("sysfailure",Material.REDSTONE,"TV"), //TV
 			new SkullWrapper("uioz",Material.REDSTONE, "Radio"), //Radio
 			new SkullWrapper("Edna_I",Material.EYE_OF_ENDER,"Ender Eye"), //Ender Eye
-			new SkullWrapper("MHF_Apple",Material.APPLE,"Apple"), //Red Apple
+			new SkullWrapper("MHF_Apple",Material.APPLE,"Apple (Un-Ripe)"), //Red Apple
+			new SkullWrapper("KylexDavis",Material.APPLE,"Apple (Ripe)"),
+			new SkullWrapper("greenskull27", Material.APPLE,"Green Apple"),
+			new SkullWrapper("hi1232", Material.MAGMA_CREAM,"Orange (Fruit)"),
+			new SkullWrapper("Aesixx", Material.MAGMA_CREAM,"Lemon (Fruit)"),
+			new SkullWrapper("TheDwarvenJaffa", Material.REDSTONE,"Cieling Fan"),
+			new SkullWrapper("Sedzzz", Material.EXP_BOTTLE, "Pint 'o' Beer"),
+			new SkullWrapper("sk8erace1", Material.SKULL_ITEM,"Companion Cube"),
+			new SkullWrapper("Taizun", Material.SPIDER_EYE, "Human-Esque Eyeball"),
 			new SkullWrapper("KyleWDM",Material.COCOA,"Coconut"), //Coconut
 			new SkullWrapper("Chuzard",Material.BLAZE_POWDER,"Pokeball"), //Pokeball
 			new SkullWrapper("L_H_2012",Material.BLAZE_POWDER,"Master Ball"), //Master Ball
@@ -122,7 +130,13 @@ public class SkullBlockItems
 			new SkullWrapper("jarrettgabe",Material.BLAZE_POWDER, "Question Box"),
 			new SkullWrapper("awesome10987",Material.SKULL_ITEM, "Witches Head"),
 			new SkullWrapper("FHG_Cam",Material.REDSTONE,"Camera / VideoCam"),//Question Box
-			new SkullWrapper("Sugar_Cane_", Material.SUGAR_CANE,"Sugar Cane")
+			new SkullWrapper("Sugar_Cane_", Material.SUGAR_CANE,"Sugar Cane"),
+			new SkullWrapper("raxo55",Material.BOOK,"Pile of Books"),
+			new SkullWrapper("Nixteen",Material.CHEST, "Mail Box"),
+			new SkullWrapper("gumbo632",Material.REDSTONE_BLOCK, "Red 6-Sided Die"),
+			new SkullWrapper("jmars213", Material.QUARTZ_BLOCK, "White 6-Sided Die"),
+			new SkullWrapper("b1418", Material.REDSTONE, "Speaker"),
+
 	};
 
 	static
