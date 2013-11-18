@@ -1,8 +1,11 @@
 package com.caved_in.skullblocks.handlers.menu.skullmenu;
 
 import com.caved_in.commons.handlers.menus.MenuHandler;
+import com.caved_in.skullblocks.handlers.menu.skullmenu.PageSwitchMenuItem.Direction;
+import com.caved_in.skullblocks.SkullBlocks;
 import com.caved_in.skullblocks.handlers.item.skullblock.SkullBlockItems;
 import com.caved_in.skullblocks.handlers.item.skullblock.SkullItem;
+import me.xhawk87.PopupMenuAPI.MenuCloseBehaviour;
 import me.xhawk87.PopupMenuAPI.PopupMenu;
 import me.xhawk87.PopupMenuAPI.PopupMenuAPI;
 import org.bukkit.entity.Player;
@@ -24,22 +27,26 @@ public class SkullblockMenu
 	{
 		skullMenu = PopupMenuAPI.createMenu("Skull-Blocks Selection (Page " + page + ")",MenuHandler.getRows(endIndex));
 		skullMenu.setExitOnClickOutside(false);
+		skullMenu.addMenuItem(new PageSwitchMenuItem(Direction.PREVIOUS, page), SkullBlocks.previousPageIndex);
+		skullMenu.addMenuItem(new PageSwitchMenuItem(Direction.NEXT,page), SkullBlocks.nextPageIndex);
 		List<SkullItem> skullItemList = SkullBlockItems.getPage(page);
 		for(int I = 0; I < skullItemList.size(); I++)
 		{
-			skullMenu.addMenuItem(new SkullblockMenuItem(skullItemList.get(I)), I);
+			skullMenu.addMenuItem(new SkullblockMenuItem(skullItemList.get(I)), (I > SkullBlocks.previousPageIndex ? I + 1 : I));
 		}
+		setCloseBehaviour();
 	}
 
-	public SkullblockMenu(int startIndex, int endIndex)
+	private void setCloseBehaviour()
 	{
-		skullMenu = PopupMenuAPI.createMenu("Skull-Blocks Selection",MenuHandler.getRows(endIndex));
-		skullMenu.setExitOnClickOutside(false);
-		List<SkullItem> skullItemList = SkullBlockItems.getSkullItems(startIndex, endIndex);
-		for(int I = 0; I < skullItemList.size(); I++)
+		skullMenu.setMenuCloseBehaviour(new MenuCloseBehaviour()
 		{
-			skullMenu.addMenuItem(new SkullblockMenuItem(skullItemList.get(I)), I);
-		}
+			@Override
+			public void onClose(Player player)
+			{
+				player.updateInventory();
+			}
+		});
 	}
 
 	public SkullblockMenu()

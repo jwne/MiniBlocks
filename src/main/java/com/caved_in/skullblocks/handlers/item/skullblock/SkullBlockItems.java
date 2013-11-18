@@ -20,6 +20,7 @@ public class SkullBlockItems
 {
 	private static Map<Integer, SkullItem> skullItems = new HashMap<>();
 	private static Map<Material, SkullMaterialWrapper> skullMaterialWrapper = new HashMap<>();
+	private static List<List<SkullItem>> skullItemPages;
 	private static int itemPages = 0;
 
 	private static SkullWrapper[] skullNames = new SkullWrapper[] {
@@ -29,7 +30,7 @@ public class SkullBlockItems
 			new SkullWrapper("LaxPride",Material.CACTUS, "Cactus - Non default"), //Cactus
 			new SkullWrapper("rsfx",Material.LEAVES, "Leaves / Foliage (Oak)"), //Leaves
 			new SkullWrapper("Dynasaur",Material.LOG, "6 Sided log (All bark)"), //Wood (6 Sided Bark)
-			new SkullWrapper("Stone",Material.LOG, "4 Sided log (Bark) with top/bottom default"), //Wood (4 Sided Bark)
+			new SkullWrapper("Stone",Material.LOG, "4 Sided log (Bark)"), //Wood (4 Sided Bark)
 			new SkullWrapper("terryxu",Material.WOOD, "Wooden planks"), //Wooden Planks
 			new SkullWrapper("Robbydeezle",Material.STONE, "Stone Block"), //Stone Block
 			new SkullWrapper("Khrenan",Material.MOSSY_COBBLESTONE, "Mossy Cobblestone"), //Mossy Cobblestone
@@ -59,7 +60,7 @@ public class SkullBlockItems
 			new SkullWrapper("dylansams",Material.BEDROCK, "Bedrock"), //Bedrock Block
 			new SkullWrapper("rugofluk",Material.SAND, "Sand"), //Sand Block
 			new SkullWrapper("Omnisulfur",Material.SAND, "Red Sand"), //Red Sand
-			new SkullWrapper("AutoSoup",Material.REDSTONE_LAMP_ON, "Redstone Lamp"), //Redstone Lamp
+			new SkullWrapper("AutoSoup",Material.REDSTONE, "Redstone Lamp"), //Redstone Lamp
 			new SkullWrapper("MHF_ArrowUp",Material.BLAZE_POWDER, "Up Arrow"), //Up Arrow
 			new SkullWrapper("MHF_ArrowDown",Material.BLAZE_POWDER, "Down Arrow"), //Down Arrow
 			new SkullWrapper("MHF_ArrowLeft",Material.BLAZE_POWDER, "Left Arrow"), //Left Arrow
@@ -113,13 +114,15 @@ public class SkullBlockItems
 			new SkullWrapper("sysfailure",Material.REDSTONE,"TV"), //TV
 			new SkullWrapper("uioz",Material.REDSTONE, "Radio"), //Radio
 			new SkullWrapper("Edna_I",Material.EYE_OF_ENDER,"Ender Eye"), //Ender Eye
-			new SkullWrapper("KylexDavis",Material.APPLE), //Red Apple
-			new SkullWrapper("KyleWDM",Material.COCOA,"Coconuts"), //Coconut
+			new SkullWrapper("MHF_Apple",Material.APPLE,"Apple"), //Red Apple
+			new SkullWrapper("KyleWDM",Material.COCOA,"Coconut"), //Coconut
 			new SkullWrapper("Chuzard",Material.BLAZE_POWDER,"Pokeball"), //Pokeball
 			new SkullWrapper("L_H_2012",Material.BLAZE_POWDER,"Master Ball"), //Master Ball
 			new SkullWrapper("benbick",Material.BLAZE_POWDER, "Rubiks Cube"), //Rubiks Cube
-			new SkullWrapper("jarrettgabe",Material.BLAZE_POWDER, "Question Box")//Question Box
-
+			new SkullWrapper("jarrettgabe",Material.BLAZE_POWDER, "Question Box"),
+			new SkullWrapper("awesome10987",Material.SKULL_ITEM, "Witches Head"),
+			new SkullWrapper("FHG_Cam",Material.REDSTONE,"Camera / VideoCam"),//Question Box
+			new SkullWrapper("Sugar_Cane_", Material.SUGAR_CANE,"Sugar Cane")
 	};
 
 	static
@@ -129,7 +132,6 @@ public class SkullBlockItems
 			SkullWrapper skullWrapper = skullNames[I];
 			List<Material> materialList = skullWrapper.getRelativeMaterials();
 			SkullItem skullItem = new SkullItem(skullWrapper.getSkullOwnerName(),I,new MaterialData(materialList.get(0)),skullWrapper.getSkullDescription());
-			skullItems.put(I, skullItem);
 			for(Material material : materialList)
 			{
 				if (!skullMaterialWrapper.containsKey(material))
@@ -142,17 +144,18 @@ public class SkullBlockItems
 				}
 			}
 		}
-		itemPages = Lists.partition(new ArrayList<>(skullItems.values()),53).size();
-	}
 
-	private static List<SkullItem> getSkullItems()
-	{
-		return new ArrayList<>(skullItems.values());
-	}
+		for(SkullMaterialWrapper materialWrapper : skullMaterialWrapper.values())
+		{
+			List<SkullItem> wrapperSkullItems = materialWrapper.getSkullItems();
+			for(int I = 0; I < wrapperSkullItems.size(); I++)
+			{
+				skullItems.put(I, wrapperSkullItems.get(I));
+			}
+		}
 
-	public static SkullItem getSkullItem(int index)
-	{
-		return skullItems.get(index);
+		skullItemPages = Lists.partition(new ArrayList<>(skullItems.values()),52);
+		itemPages = skullItemPages.size();
 	}
 
 	public static ItemStack getItemStack(SkullItem skullItem)
@@ -161,26 +164,7 @@ public class SkullBlockItems
 		ItemMeta itemMeta = skullItemStack.getItemMeta();
 		itemMeta.setDisplayName(skullItem.getSkullDescription());
 		skullItemStack.setItemMeta(itemMeta);
-		//skullItemStack.setAmount(64);
 		return skullItemStack;
-	}
-
-	public static ItemStack getItemStack(int itemIndex)
-	{
-		return getItemStack(skullItems.get(itemIndex));
-	}
-
-	public static List<SkullItem> getSkullItems(int startIndex, int endIndex)
-	{
-		LinkedList<SkullItem> skullItemsList = new LinkedList<SkullItem>();
-		if (skullItems.size() >= startIndex && skullItems.size() <= endIndex)
-		{
-			for(int I = startIndex; I < endIndex; I++)
-			{
-				skullItemsList.add(skullItems.get(I));
-			}
-		}
-		return skullItemsList;
 	}
 
 	public static int getPages()
@@ -190,6 +174,6 @@ public class SkullBlockItems
 
 	public static List<SkullItem> getPage(int itemPage)
 	{
-		return Lists.partition(getSkullItems(),53).get(itemPage - 1);
+		return skullItemPages.get(itemPage - 1);
 	}
 }

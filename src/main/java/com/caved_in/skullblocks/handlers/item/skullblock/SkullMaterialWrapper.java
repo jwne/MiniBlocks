@@ -33,6 +33,11 @@ public class SkullMaterialWrapper
 		return skullMaterial;
 	}
 
+	public List<SkullItem> getSkullItems()
+	{
+		return skullItems;
+	}
+
 	public void addSkullItem(SkullItem skullItem)
 	{
 		if (!skullItems.contains(skullItem))

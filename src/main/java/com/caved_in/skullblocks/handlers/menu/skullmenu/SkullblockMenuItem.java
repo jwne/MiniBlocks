@@ -16,6 +16,7 @@ public class SkullblockMenuItem extends MenuItem
 {
 	private ItemStack skullItemStack;
 	private int skullItemIndex;
+
 	public SkullblockMenuItem(SkullItem skullItem)
 	{
 		super(skullItem.getSkullDescription(), skullItem.getSkullMaterial());
@@ -27,7 +28,6 @@ public class SkullblockMenuItem extends MenuItem
 	public void onClick(Player player)
 	{
 		player.getInventory().addItem(skullItemStack);
-		player.updateInventory();
 	}
 
 	public int getSkullItemIndex()

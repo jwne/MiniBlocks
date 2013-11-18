@@ -13,6 +13,8 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class SkullBlocks extends JavaPlugin
 {
+	public static final int previousPageIndex = 45;
+	public static final int nextPageIndex = 53;
 	@Override
 	public void onEnable()
 	{
