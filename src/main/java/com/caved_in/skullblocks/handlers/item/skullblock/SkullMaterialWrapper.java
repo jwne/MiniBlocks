@@ -11,37 +11,30 @@ import java.util.List;
  * Date: 14/11/13
  * Time: 9:58 AM
  */
-public class SkullMaterialWrapper
-{
+public class SkullMaterialWrapper {
 	private MaterialData skullMaterial;
 	private List<SkullItem> skullItems = new ArrayList<>();
 
-	public SkullMaterialWrapper(Material skullMaterial, SkullItem skullItem)
-	{
+	public SkullMaterialWrapper(Material skullMaterial, SkullItem skullItem) {
 		this.skullMaterial = new MaterialData(skullMaterial);
 		this.skullItems.add(skullItem);
 	}
 
-	public SkullMaterialWrapper(MaterialData skullMaterial, SkullItem skullItem)
-	{
+	public SkullMaterialWrapper(MaterialData skullMaterial, SkullItem skullItem) {
 		this.skullMaterial = skullMaterial;
 		this.skullItems.add(skullItem);
 	}
 
-	public MaterialData getSkullMaterial()
-	{
+	public MaterialData getSkullMaterial() {
 		return skullMaterial;
 	}
 
-	public List<SkullItem> getSkullItems()
-	{
+	public List<SkullItem> getSkullItems() {
 		return skullItems;
 	}
 
-	public void addSkullItem(SkullItem skullItem)
-	{
-		if (!skullItems.contains(skullItem))
-		{
+	public void addSkullItem(SkullItem skullItem) {
+		if (!skullItems.contains(skullItem)) {
 			skullItems.add(skullItem);
 		}
 	}

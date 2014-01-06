@@ -1,6 +1,6 @@
 package com.caved_in.skullblocks;
 
-import com.caved_in.skullblocks.commands.CommandController;
+import com.caved_in.commons.commands.CommandController;
 import com.caved_in.skullblocks.commands.SkullBlockCommands;
 import com.caved_in.skullblocks.listeners.EventListeners;
 import org.bukkit.event.HandlerList;
@@ -11,23 +11,19 @@ import org.bukkit.plugin.java.JavaPlugin;
  * Date: 12/11/13
  * Time: 9:19 AM
  */
-public class SkullBlocks extends JavaPlugin
-{
+public class SkullBlocks extends JavaPlugin {
 	public static final int previousPageIndex = 45;
 	public static final int nextPageIndex = 53;
+
 	@Override
-	public void onEnable()
-	{
+	public void onEnable() {
 		CommandController.registerCommands(this, new SkullBlockCommands());
 		new EventListeners(this);
 	}
 
-
 	@Override
-	public void onDisable()
-	{
+	public void onDisable() {
 		HandlerList.unregisterAll(this);
 		getServer().getScheduler().cancelTasks(this);
 	}
-
 }

@@ -73,7 +73,7 @@
             <dependency>
                 <groupId>com.caved_in</groupId>
                 <artifactId>commons</artifactId>
-                <version>1.0-TEST</version>
+                <version>RELEASE</version>
             </dependency>
             <dependency>
                 <groupId>me.xhawk87</groupId>
