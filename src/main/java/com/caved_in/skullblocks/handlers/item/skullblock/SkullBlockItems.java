@@ -116,6 +116,7 @@ public class SkullBlockItems {
 			new SkullWrapper("Taizun", Material.SPIDER_EYE, "Human-Esque Eyeball"),
 			new SkullWrapper("KyleWDM", Material.COCOA, "Coconut"), //Coconut
 			new SkullWrapper("Chuzard", Material.BLAZE_POWDER, "Pokeball"), //Pokeball
+			new SkullWrapper("Blopdsand",Material.BLAZE_POWDER, "Pokeball"),
 			new SkullWrapper("L_H_2012", Material.BLAZE_POWDER, "Master Ball"), //Master Ball
 			new SkullWrapper("benbick", Material.BLAZE_POWDER, "Rubiks Cube"), //Rubiks Cube
 			new SkullWrapper("jarrettgabe", Material.BLAZE_POWDER, "Question Box"),
