@@ -1,15 +1,15 @@
-name: SkullBlocks
-main: com.caved_in.skullblocks.SkullBlocks
+name: MiniBlocks
+main: com.caved_in.miniblocks.MiniBlocks
 version: 1.0
-description: Blocks made with the skulls of players, muahahahahahaha!
+description: Blocks, but minified
 author: Brandon
 depend: [Tunnels-Common, PopupMenuAPI]
 commands:
-   skullwand:
+   miniwand:
       usage: /<command>
-      description: Used to get the skull-wand
-      aliases: [sw, skw, sklwnd]
-   skullblocks:
+      description: Used to get the mini-block wand
+      aliases: [mw, mbw, mbwnd]
+   miniblocks:
       usage: /<command> [SubCommand]
-      description: Used to generate skull-blocks
-      aliases: [skb, sklblk, sbl]
+      description: Used to open the menu for selecting mini-blocks
+      aliases: [mb, minblk, mbl, mbk]

@@ -1,5 +1,6 @@
-package com.caved_in.skullblocks.config;
+package com.caved_in.miniblocks.config;
 
+import com.caved_in.commons.items.ItemHandler;
 import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
 import org.simpleframework.xml.Element;
@@ -10,7 +11,7 @@ import org.simpleframework.xml.Element;
  * Time: 1:24 PM
  */
 
-public class XMLSkull {
+public class XMLBlock {
 	@Element
 	private String playerName;
 
@@ -22,30 +23,23 @@ public class XMLSkull {
 	@Element
 	private String displayName;
 
-	public XMLSkull(@Element(name = "playerName") String playerName,
+	public XMLBlock(@Element(name = "playerName") String playerName,
 					@Element(name = "material") String material,
 					@Element(name = "displayName") String displayName) {
 		this.playerName = playerName;
 		this.displayName = displayName;
 		this.material = material;
-		getMaterialData();
-	}
-
-	public XMLSkull() {
-		this.playerName = "TheGamersCave";
-		this.material = "397:3";
-		this.displayName = "Finn Head";
-		getMaterialData();
-	}
-
-	private void getMaterialData() {
 		if (material.contains(":")) {
-			String[] materialSplit = material.split(":");
-			int materialId = Integer.parseInt(materialSplit[0]);
-			int dataValue = Integer.parseInt(materialSplit[1]);
-			materialData = new MaterialData(Material.getMaterial(materialId), (byte) dataValue);
+			materialData = ItemHandler.getMaterialDataFromString(material);
 		} else {
 			materialData = new MaterialData(Material.getMaterial(Integer.parseInt(material)));
 		}
+	}
+
+	public XMLBlock() {
+		this.playerName = "TheGamersCave";
+		this.material = "397:3";
+		this.displayName = "Finn Head";
+		materialData = ItemHandler.getMaterialDataFromString(material);
 	}
 }

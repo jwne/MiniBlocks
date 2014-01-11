@@ -1,6 +1,6 @@
-package com.caved_in.skullblocks.handlers.menu.skullmenu;
+package com.caved_in.miniblocks.handlers.menu.blockmenu;
 
-import com.caved_in.skullblocks.handlers.item.skullblock.SkullBlockItems;
+import com.caved_in.miniblocks.handlers.item.miniblock.MiniBlockItems;
 import me.xhawk87.PopupMenuAPI.MenuItem;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -26,17 +26,17 @@ public class PageSwitchMenuItem extends MenuItem {
 	public void onClick(Player player) {
 		switch (pageDirection) {
 			case NEXT:
-				if (SkullBlockItems.getPages() == 0 || menuPage >= SkullBlockItems.getPages()) {
+				if (MiniBlockItems.getPages() == 0 || menuPage >= MiniBlockItems.getPages()) {
 					player.sendMessage("This is the final page, please use the previous button.");
 				} else {
-					this.getMenu().switchMenu(player, new SkullblockMenu(menuPage + 1).getMenu());
+					getMenu().switchMenu(player, new MiniblockMenu(menuPage + 1).getMenu());
 				}
 				break;
 			case PREVIOUS:
-				if (menuPage == 0 || SkullBlockItems.getPages() == 0) {
+				if (menuPage <= 1 || MiniBlockItems.getPages() == 0) {
 					player.sendMessage("This is the first page, please use the next button.");
 				} else {
-					this.getMenu().switchMenu(player, new SkullblockMenu(menuPage - 1).getMenu());
+					getMenu().switchMenu(player, new MiniblockMenu(menuPage - 1).getMenu());
 				}
 				break;
 			default:

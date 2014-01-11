@@ -1,4 +1,4 @@
-package com.caved_in.skullblocks.handlers.item.skullblock;
+package com.caved_in.miniblocks.handlers.item.miniblock;
 
 import org.bukkit.Material;
 import org.bukkit.material.MaterialData;
@@ -8,30 +8,30 @@ import org.bukkit.material.MaterialData;
  * Date: 14/11/13
  * Time: 9:19 AM
  */
-public class SkullWrapper {
+public class MiniWrapper {
 	private String skullOwnerName;
 	private boolean hasMultipleMaterials = false;
 	private MaterialData relativeMaterial;
-	private String skullDescription;
+	private String description;
 
-	public SkullWrapper(String skullOwnerName, MaterialData relativeMaterial) {
+	public MiniWrapper(String skullOwnerName, MaterialData relativeMaterial) {
 		this.skullOwnerName = skullOwnerName;
 		this.relativeMaterial = relativeMaterial;
 	}
 
-	public SkullWrapper(String skullOwnerName, Material relativeMaterial) {
+	public MiniWrapper(String skullOwnerName, Material relativeMaterial) {
 		this.skullOwnerName = skullOwnerName;
 		this.relativeMaterial = new MaterialData(relativeMaterial);
 	}
 
-	public SkullWrapper(String skullOwnerName, Material relativeMaterial, String skullDescription) {
+	public MiniWrapper(String skullOwnerName, Material relativeMaterial, String description) {
 		this(skullOwnerName, relativeMaterial);
-		this.skullDescription = skullDescription;
+		this.description = description;
 	}
 
-	public SkullWrapper(String skullOwnerName, MaterialData relativeMaterial, String skullDescription) {
+	public MiniWrapper(String skullOwnerName, MaterialData relativeMaterial, String description) {
 		this(skullOwnerName, relativeMaterial);
-		this.skullDescription = skullDescription;
+		this.description = description;
 	}
 
 
@@ -39,11 +39,11 @@ public class SkullWrapper {
 		return relativeMaterial;
 	}
 
-	public String getSkullOwnerName() {
+	public String getPlayerName() {
 		return skullOwnerName;
 	}
 
-	public String getSkullDescription() {
-		return skullDescription;
+	public String getDescription() {
+		return description;
 	}
 }
